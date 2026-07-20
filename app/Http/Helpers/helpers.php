@@ -4,6 +4,64 @@ function format_uang ($angka) {
     return number_format($angka, 0, '.', ',');
 }
 
+function tenant_shop_login_url(string $subdomain, ?\Illuminate\Http\Request $request = null): string
+{
+    $request = $request ?? request();
+    $tenantDomain = config('app.tenant_domain');
+    $port = $request->getPort();
+    $portSuffix = in_array($port, [80, 443], true) ? '' : ':'.$port;
+
+    return $request->getScheme().'://'.$subdomain.'.'.$tenantDomain.$portSuffix.'/login';
+}
+
+/**
+ * Absolute URL on the central domain (works even when called inside a tenant request).
+ */
+function central_url(string $path = '/'): string
+{
+    $request = request();
+    $central = config('app.central_domain') ?: config('app.tenant_domain', 'localhost');
+    $port = $request->getPort();
+    $portSuffix = in_array((int) $port, [80, 443], true) ? '' : ':'.$port;
+    $path = '/'.ltrim($path, '/');
+
+    if ($path === '/') {
+        $path = '';
+    }
+
+    return $request->getScheme().'://'.$central.$portSuffix.$path;
+}
+
+/**
+ * Format a date/time in Nigeria (Africa/Lagos) using 12-hour clock.
+ *
+ * $withSeconds = true  => 20 Jul 2026, 3:15:51 PM
+ * $withSeconds = false => 20 Jul 2026, 3:15 PM
+ * $dateOnly    = true  => 20 Jul 2026
+ */
+function nigeria_datetime($value, bool $withSeconds = true, bool $dateOnly = false): string
+{
+    if (! $value) {
+        return '—';
+    }
+
+    try {
+        $date = $value instanceof \Carbon\Carbon
+            ? $value->copy()
+            : \Carbon\Carbon::parse($value);
+    } catch (\Throwable $e) {
+        return '—';
+    }
+
+    $date = $date->timezone(config('app.timezone', 'Africa/Lagos'));
+
+    if ($dateOnly) {
+        return $date->format('d M Y');
+    }
+
+    return $date->format($withSeconds ? 'd M Y, g:i:s A' : 'd M Y, g:i A');
+}
+
 // function terbilang ($angka) {
 //     $angka = abs($angka);
 //     $baca  = array('', "One",       "Two",      "Three",
@@ -140,4 +198,41 @@ function tanggal_indonesia($tgl, $tampil_hari = true)
 function tambah_nol_didepan($value, $threshold = null)
 {
     return sprintf("%0". $threshold . "s", $value);
+}
+
+function subscription_monthly_price_ngn(): int
+{
+    return (int) config('subscription.monthly_price_ngn', 7500);
+}
+
+function subscription_yearly_discount_percent(): int
+{
+    return (int) config('subscription.yearly_discount_percent', 40);
+}
+
+/**
+ * Full year at monthly rate (before discount).
+ */
+function subscription_yearly_full_price_ngn(): int
+{
+    return subscription_monthly_price_ngn() * 12;
+}
+
+/**
+ * Yearly plan price after discount.
+ */
+function subscription_yearly_price_ngn(): int
+{
+    $full = subscription_yearly_full_price_ngn();
+    $discount = subscription_yearly_discount_percent();
+
+    return (int) round($full * (100 - $discount) / 100);
+}
+
+/**
+ * Amount saved on the yearly plan vs paying monthly for 12 months.
+ */
+function subscription_yearly_savings_ngn(): int
+{
+    return subscription_yearly_full_price_ngn() - subscription_yearly_price_ngn();
 }

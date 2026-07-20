@@ -54,6 +54,10 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'central_domain' => env('CENTRAL_DOMAIN', 'localhost'),
+
+    'tenant_domain' => env('TENANT_DOMAIN', env('CENTRAL_DOMAIN', 'localhost')),
+
     'asset_url' => env('ASSET_URL', null),
 
     /*
@@ -177,8 +181,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\FortifyServiceProvider::class,
-        App\Providers\JetstreamServiceProvider::class,
+        // App\Providers\FortifyServiceProvider::class,
+        // App\Providers\JetstreamServiceProvider::class,
+        App\Providers\TenancyServiceProvider::class,
 
     ],
 

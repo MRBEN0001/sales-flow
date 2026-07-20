@@ -13,6 +13,7 @@
 
         <form action="{{ route('login') }}" method="post" class="form-login">
             @csrf
+            <input type="hidden" name="device_fingerprint" id="device_fingerprint" value="">
             <div class="form-group has-feedback @error('email') has-error @enderror">
                 <input type="email" name="email" class="form-control" placeholder="Email" required value="{{ old('email') }}" autofocus>
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -35,7 +36,7 @@
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
-                            <input type="checkbox"> Remember Me
+                            <input type="checkbox" name="remember"> Remember Me
                         </label>
                     </div>
                 </div>
@@ -50,4 +51,13 @@
     <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
+@include('partials.device-fingerprint')
+<script>
+(function () {
+    var field = document.getElementById('device_fingerprint');
+    if (field && window.SalesFlowDevice) {
+        field.value = window.SalesFlowDevice.buildFingerprint();
+    }
+})();
+</script>
 @endsection

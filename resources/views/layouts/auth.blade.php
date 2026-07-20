@@ -51,5 +51,6 @@
         });
         $('.form-login').validator();
     </script>
+    @include('partials.whatsapp-support')
 </body>
 </html>

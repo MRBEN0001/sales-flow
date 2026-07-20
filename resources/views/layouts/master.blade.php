@@ -59,7 +59,22 @@
 
             <!-- Main content -->
             <section class="content">
-                
+                @if (function_exists('tenant') && tenant())
+                    @if (tenant()->isOnTrial())
+                        <div class="alert alert-info">
+                            Free trial: {{ tenant()->trialDaysRemaining() }} days left
+                            (ends {{ optional(tenant()->trial_ends_at)->format('d M Y') }}).
+                            Subscription is ₦{{ number_format(subscription_monthly_price_ngn()) }}/month after trial.
+                        </div>
+                    @elseif (tenant()->subscription_status === \App\Models\Tenant::STATUS_ACTIVE && tenant()->subscription_ends_at)
+                        <div class="alert alert-success">
+                            {{ tenant()->planLabel() ?: 'Paid' }} plan active until
+                            <strong>{{ tenant()->subscription_ends_at->format('d M Y') }}</strong>
+                            ({{ tenant()->subscriptionDaysRemaining() }} days left).
+                        </div>
+                    @endif
+                @endif
+
                 @yield('content')
 
             </section>
@@ -93,5 +108,6 @@
         }
     </script>
     @stack('scripts')
+    @include('partials.whatsapp-support')
 </body>
 </html>

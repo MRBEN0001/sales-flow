@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8fc1d970556ecc651ddbdae00f44e208",
+    "content-hash": "b98e4d358432e4030371115438759134",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1056,6 +1056,59 @@
                 }
             ],
             "time": "2020-12-29T14:50:06+00:00"
+        },
+        {
+            "name": "facade/ignition-contracts",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facade/ignition-contracts.git",
+                "reference": "3c921a1cdba35b68a7f0ccffc6dffc1995b18267"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facade/ignition-contracts/zipball/3c921a1cdba35b68a7f0ccffc6dffc1995b18267",
+                "reference": "3c921a1cdba35b68a7f0ccffc6dffc1995b18267",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^v2.15.8",
+                "phpunit/phpunit": "^9.3.11",
+                "vimeo/psalm": "^3.17.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Facade\\IgnitionContracts\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://flareapp.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Solution contracts for Ignition",
+            "homepage": "https://github.com/facade/ignition-contracts",
+            "keywords": [
+                "contracts",
+                "flare",
+                "ignition"
+            ],
+            "support": {
+                "issues": "https://github.com/facade/ignition-contracts/issues",
+                "source": "https://github.com/facade/ignition-contracts/tree/1.0.2"
+            },
+            "time": "2020-10-16T08:27:54+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -4327,6 +4380,178 @@
             "time": "2025-07-11T13:20:48+00:00"
         },
         {
+            "name": "stancl/jobpipeline",
+            "version": "v1.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/archtechx/jobpipeline.git",
+                "reference": "fe0fc363e672a8b101997af628ccf838710ed191"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/archtechx/jobpipeline/zipball/fe0fc363e672a8b101997af628ccf838710ed191",
+                "reference": "fe0fc363e672a8b101997af628ccf838710ed191",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^6.0|^8.0|^9.0"
+            },
+            "require-dev": {
+                "ext-redis": "*",
+                "orchestra/testbench": "^4.0|^6.0|^7.0",
+                "spatie/valuestore": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stancl\\JobPipeline\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Samuel Štancl",
+                    "email": "samuel.stancl@gmail.com"
+                }
+            ],
+            "description": "Turn any series of jobs into Laravel listeners.",
+            "support": {
+                "issues": "https://github.com/archtechx/jobpipeline/issues",
+                "source": "https://github.com/archtechx/jobpipeline/tree/v1.6.1"
+            },
+            "time": "2022-03-30T15:12:15+00:00"
+        },
+        {
+            "name": "stancl/tenancy",
+            "version": "v3.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/archtechx/tenancy.git",
+                "reference": "e442bdb64419038758d4fd6e10946735050b5a7d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/archtechx/tenancy/zipball/e442bdb64419038758d4fd6e10946735050b5a7d",
+                "reference": "e442bdb64419038758d4fd6e10946735050b5a7d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "facade/ignition-contracts": "^1.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "ramsey/uuid": "^3.7|^4.0",
+                "stancl/jobpipeline": "^1.0",
+                "stancl/virtualcolumn": "^1.0"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^2.10",
+                "laravel/framework": "^6.0|^7.0|^8.0",
+                "league/flysystem-aws-s3-v3": "~1.0",
+                "orchestra/testbench-browser-kit": "^4.0|^5.0|^6.0",
+                "spatie/valuestore": "^1.2.5",
+                "vlucas/phpdotenv": "^3.3|^4.0|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Tenancy": "Stancl\\Tenancy\\Facades\\Tenancy",
+                        "GlobalCache": "Stancl\\Tenancy\\Facades\\GlobalCache"
+                    },
+                    "providers": [
+                        "Stancl\\Tenancy\\TenancyServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Stancl\\Tenancy\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Samuel Štancl",
+                    "email": "samuel.stancl@gmail.com"
+                }
+            ],
+            "description": "Automatic multi-tenancy for your Laravel application.",
+            "keywords": [
+                "laravel",
+                "multi-database",
+                "multi-tenancy",
+                "tenancy"
+            ],
+            "support": {
+                "issues": "https://github.com/archtechx/tenancy/issues",
+                "source": "https://github.com/archtechx/tenancy/tree/v3.5.0"
+            },
+            "funding": [
+                {
+                    "url": "https://tenancyforlaravel.com/donate",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/stancl",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-12-31T17:29:05+00:00"
+        },
+        {
+            "name": "stancl/virtualcolumn",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/archtechx/virtualcolumn.git",
+                "reference": "ab3f943990e8b3e0a6ba5e90be6bf216bdaf1719"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/archtechx/virtualcolumn/zipball/ab3f943990e8b3e0a6ba5e90be6bf216bdaf1719",
+                "reference": "ab3f943990e8b3e0a6ba5e90be6bf216bdaf1719",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^6.0|^8.0|^9.0",
+                "illuminate/support": "^6.0|^8.0|^9.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0|^6.0|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stancl\\VirtualColumn\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Samuel Štancl",
+                    "email": "samuel.stancl@gmail.com"
+                }
+            ],
+            "description": "Eloquent virtual column.",
+            "support": {
+                "issues": "https://github.com/archtechx/virtualcolumn/issues",
+                "source": "https://github.com/archtechx/virtualcolumn/tree/v1.3.0"
+            },
+            "time": "2022-10-21T12:09:30+00:00"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v6.3.0",
             "source": {
@@ -7034,59 +7259,6 @@
             "time": "2023-01-26T12:34:59+00:00"
         },
         {
-            "name": "facade/ignition-contracts",
-            "version": "1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/facade/ignition-contracts.git",
-                "reference": "3c921a1cdba35b68a7f0ccffc6dffc1995b18267"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition-contracts/zipball/3c921a1cdba35b68a7f0ccffc6dffc1995b18267",
-                "reference": "3c921a1cdba35b68a7f0ccffc6dffc1995b18267",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.3|^8.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^v2.15.8",
-                "phpunit/phpunit": "^9.3.11",
-                "vimeo/psalm": "^3.17.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Facade\\IgnitionContracts\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://flareapp.io",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Solution contracts for Ignition",
-            "homepage": "https://github.com/facade/ignition-contracts",
-            "keywords": [
-                "contracts",
-                "flare",
-                "ignition"
-            ],
-            "support": {
-                "issues": "https://github.com/facade/ignition-contracts/issues",
-                "source": "https://github.com/facade/ignition-contracts/tree/1.0.2"
-            },
-            "time": "2020-10-16T08:27:54+00:00"
-        },
-        {
             "name": "fakerphp/faker",
             "version": "v1.24.1",
             "source": {
@@ -7270,6 +7442,63 @@
                 "source": "https://github.com/hamcrest/hamcrest-php/tree/v2.1.1"
             },
             "time": "2025-04-30T06:54:44+00:00"
+        },
+        {
+            "name": "laravel/breeze",
+            "version": "v1.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/breeze.git",
+                "reference": "e98e855ab4bde5bf0083c4a4d73c0f5b474241ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/breeze/zipball/e98e855ab4bde5bf0083c4a4d73c0f5b474241ae",
+                "reference": "e98e855ab4bde5bf0083c4a4d73c0f5b474241ae",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/filesystem": "^8.42|^9.0",
+                "illuminate/support": "^8.42|^9.0",
+                "illuminate/validation": "^8.42|^9.0",
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Breeze\\BreezeServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Breeze\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Minimal Laravel authentication scaffolding with Blade and Tailwind.",
+            "keywords": [
+                "auth",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/breeze/issues",
+                "source": "https://github.com/laravel/breeze"
+            },
+            "time": "2022-06-28T11:52:06+00:00"
         },
         {
             "name": "laravel/sail",
@@ -9249,5 +9478,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }

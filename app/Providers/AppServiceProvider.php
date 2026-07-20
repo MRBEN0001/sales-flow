@@ -14,6 +14,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        if (class_exists(\Laravel\Fortify\Fortify::class)) {
+            \Laravel\Fortify\Fortify::ignoreRoutes();
+        }
+
+        if (class_exists(\Laravel\Jetstream\Jetstream::class)) {
+            \Laravel\Jetstream\Jetstream::ignoreRoutes();
+        }
+
         view()->composer('layouts.master', function ($view) {
             $view->with('setting', Setting::first());
         });
@@ -25,11 +33,6 @@ class AppServiceProvider extends ServiceProvider
         });
     }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot()
     {
         //

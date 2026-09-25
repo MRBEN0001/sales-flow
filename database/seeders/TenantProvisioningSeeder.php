@@ -45,7 +45,10 @@ class TenantProvisioningSeeder extends Seeder
             ]
         );
 
-        $this->call(DevShopsAdminUserSeeder::class);
+        $this->call([
+            DevShopsAdminUserSeeder::class,
+            UserTableSeeder::class,
+        ]);
 
         tenancy()->central(function () use ($tenant) {
             $record = Tenant::find($tenant->id);
